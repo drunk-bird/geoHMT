@@ -4,7 +4,7 @@
 [![image](https://img.shields.io/pypi/v/geoHMT.svg)](https://pypi.python.org/pypi/geoHMT)
 [![image](https://img.shields.io/conda/vn/conda-forge/geoHMT.svg)](https://anaconda.org/conda-forge/geoHMT)
 [![image](https://github.com/giswqs/geoHMT/workflows/docs/badge.svg)](https://geoHMT.gishub.org)
-[![image](https://github.com/giswqs/geoHMT/workflows/build/badge.svg)](https://github.com/giswqs/geoHMT/actions?query=workflow%3Abuild)
+[![image](https://github.com/drunk-bird/geoHMT/workflows/build/badge.svg)](https://github.com/drunk-bird/geoHMT/actions?query=workflow%3Abuild)
 [![image](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
