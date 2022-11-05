@@ -51,4 +51,4 @@ nav:
     - API Reference:
           - geohmt module: geohmt.md
     - Notebooks:
-          - create map: geomt.md
+          - add shapefile or geojson: notebooks/Add_shapefile_and_geojson.ipynb
