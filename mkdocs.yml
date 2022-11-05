@@ -50,3 +50,5 @@ nav:
     - Report Issues: https://github.com/drunk-bird/geoHMT/issues
     - API Reference:
           - geohmt module: geohmt.md
+    - Notebooks:
+          - create map: geomt.md
