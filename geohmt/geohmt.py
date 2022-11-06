@@ -1,10 +1,17 @@
-"""Main module."""
+"""Main module for the geoHMT."""
 
 import os
 import ipyleaflet
 from ipyleaflet import FullScreenControl, LayersControl, DrawControl, MeasureControl, ScaleControl,TileLayer
+from .utils import random_string
+
 
 class Map(ipyleaflet.Map):
+    """this Map class inherits the ipyleaflet Map class.
+
+    Args:
+        ipyleaflet (class): An ipyleaflet map.
+    """    
     
     def __init__(self,**kwargs):
         
@@ -43,6 +50,17 @@ class Map(ipyleaflet.Map):
 
     # load geojson
     def add_geojson(self,geojson,style=None,layer_name="Untitled"):
+        """adds a GeoJson file to the map.
+
+        Args:
+            geojson (str): The file path to the input GeoJSON
+            style (dict, optional): The style for the Geojson layer. Defaults to None.
+            layer_name (str, optional): the layer name for the GeoJSON. Defaults to "Untitled".
+
+        Raises:
+            FileNotFoundError: If the provided file dose not exist.
+            TypeError: If the input geojson is not a str or dict.
+        """        
 
         import json
 
@@ -76,13 +94,32 @@ class Map(ipyleaflet.Map):
 
     # load shapefile
     def add_shapefile(self,shp,style=None,layer_name="Untitled"):
-        
+        """Adds a shapefile layer to the map.
+
+        Args:
+            shp (str): The file path to the input shapefile.
+            style (dict, optional): The style dictionary. Defaults to None.
+            layer_name (str, optional): The layer name for the shapefile layer. Defaults to "Untitled".
+        """        
         geojson = shp_to_geojson(shp)
         self.add_geojson(geojson,style=style,layer_name=layer_name)
 
 
 #shpfile transform geojson
 def shp_to_geojson(shp,savefile=None):
+    """Converts a shapefile to GeoJSON.
+
+    Args:
+        shp (str): The file path to the input shapefile.
+        savefile (str, optional): the file path to the output GeoJSoN. Defaults to None.
+
+    Raises:
+        FileNotFoundError: If the input shapefile does not exist.
+
+    Returns:
+        dict: the dictionary of the GeoJSON.
+    """
+
     import json
     import shapefile
 

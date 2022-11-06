@@ -50,5 +50,6 @@ nav:
     - Report Issues: https://github.com/drunk-bird/geoHMT/issues
     - API Reference:
           - geohmt module: geohmt.md
+          - utils module: utils.md
     - Notebooks:
           - add shapefile or geojson: notebooks/Add_shapefile_and_geojson.ipynb
