@@ -1,3 +1,6 @@
+earthengine-api
 ipyleaflet
 folium
 pyshp
+ipyfilechooser
+geopandas

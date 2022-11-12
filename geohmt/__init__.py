@@ -6,3 +6,4 @@ __version__ = '0.0.6'
 
 
 from .geohmt import *
+from .utils import *
