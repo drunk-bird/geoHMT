@@ -1,6 +1,7 @@
 earthengine-api
 ipyleaflet
-folium
 pyshp
 ipyfilechooser
 geopandas
+geocoder
+ipyevents
