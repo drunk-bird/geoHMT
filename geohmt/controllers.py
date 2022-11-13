@@ -10,8 +10,6 @@ from .utils import geocode
 import ee
 
 
-
-
 class viewerController(ipyleaflet.Map):
 
     def __init__(self,**kwargs):
@@ -47,18 +45,33 @@ class viewerController(ipyleaflet.Map):
     def initControlBar(self):
 
         self.clear_controls()
-
+        #search
         self.searchBar = ui_searchBar(position="topleft")
         self.searchBar.on_submit(self.searchBar_submited)
         self.searchBar.result_observe(self.search_result_change,names="value")
         self.add_control(self.searchBar)
 
+        #draw tool
+        self.draw_control = ipyleaflet.DrawControl(
+            marker={"shapeOptions": {"color": "#3388ff"}},
+            rectangle={"shapeOptions": {"color": "#3388ff"}},
+            # circle={"shapeOptions": {"color": "#3388ff"}},
+            circlemarker={},
+            position="topleft",
+            edit=True,
+            remove=True,
+        )
+
+        self.draw_control.on_draw(self.handle_draw)
+
 
         self.add_control(LayersControl(position="topright"))
         self.add_control(FullScreenControl())
-        self.add_control(DrawControl(position="topleft"))
+        self.add_control(self.draw_control)
         self.add_control(MeasureControl())
         self.add_control(ScaleControl(position="bottomleft"))
+
+    
 
 
 
@@ -125,7 +138,48 @@ class viewerController(ipyleaflet.Map):
 
 
 
+    #Handles draw events
+    def handle_draw(self,target, action, geo_json):
+        print(target,action,geo_json)
+        #action:created、
+        try:
+            self.roi_start = True
+            # geom = geojson_to_ee(geo_json, False)
+            # self.user_roi = geom
+            # feature = ee.Feature(geom)
+            self.draw_last_json = geo_json
+            # self.draw_last_feature = feature
+            # if action == "deleted" and len(self.draw_features) > 0:
+                # self.draw_features.remove(feature)
+                # self.draw_count -= 1
+        #     else:
+        #         self.draw_features.append(feature)
+        #         self.draw_count += 1
+        #     collection = ee.FeatureCollection(self.draw_features)
+        #     self.user_rois = collection
+        #     ee_draw_layer = ee_tile_layer(
+        #         collection, {"color": "blue"}, "Drawn Features", False, 0.5
+        #     )
+        #     draw_layer_index = self.find_layer_index("Drawn Features")
 
+        #     if draw_layer_index == -1:
+        #         self.add_layer(ee_draw_layer)
+        #         self.draw_layer = ee_draw_layer
+        #     else:
+        #         self.substitute_layer(self.draw_layer, ee_draw_layer)
+        #         self.draw_layer = ee_draw_layer
+        #     self.roi_end = True
+        #     self.roi_start = False
+        except Exception as e:
+        #     self.draw_count = 0
+        #     self.draw_features = []
+        #     self.draw_last_feature = None
+        #     self.draw_layer = None
+        #     self.user_roi = None
+        #     self.roi_start = False
+        #     self.roi_end = False
+        #     print("There was an error creating Earth Engine Feature.")
+            raise Exception(e)
 
 
 
