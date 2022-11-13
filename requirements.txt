@@ -5,3 +5,4 @@ ipyfilechooser
 geopandas
 geocoder
 ipyevents
+jupyterlab
